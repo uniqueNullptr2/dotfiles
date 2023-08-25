@@ -76,7 +76,12 @@ exec swaync
 # Toggle control center
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
+# brightness
+exec bash -c 'mkfifo $SWAYSOCK.wob_bkl; tail -f $SWAYSOCK.wob_bkl | wob'
+exec bash -c 'mkfifo $SWAYSOCK.wob_snd; tail -f $SWAYSOCK.wob_snd | wob'
 
+bindsym --locked XF86MonBrightnessDown exec light -U 2% && light -G | awk '{print int($1)}' > $SWAYSOCK.wob_bkl
+bindsym --locked XF86MonBrightnessUp exec light -A 2% && light -G | awk '{print int($1)}' > $SWAYSOCK.wob_bkl
 ### Key bindings
 #
 # Basics:
@@ -110,16 +115,17 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
     exec wl-paste -t text --watch clipman store --no-persist
 #Screenshot
 # TODO check working
-bindsym Print exec  grim $HOME/Pictures/Screenshots/$(date +"%Y%m%dT%H%M%S").png && notify-send "Screenshot" "Screenshot Captured"
+bindsym Print exec  grim X$HOME/Pictures/Screenshots/$(date +"%Y%m%dT%H%M%S").png && notify-send "Screenshot" "Screenshot Captured"
 bindsym Shift+Print exec  grim -g "$(slurp)" $HOME/Pictures/Screenshots/$(date +"%Y%m%dT%H%M%S").png && notify-send "Screenshot" "Screenshot Captured"
 
 # Volume Controls
 #
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
-bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+ && amixer sget Master | gawk '/Left:/ { gsub(/\[|\]|%/, ""); print $5; }' > $SWAYSOCK.wob_snd
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%- && amixer sget Master | gawk '/Left:/ { gsub(/\[|\]|%/, ""); print $5; }' > $SWAYSOCK.wob_snd
+bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle && amixer sget Master | gawk '/Left:/ && /\[on\]/ { gsub(/\[|\]|%/, ""); print $5; } /Left:/ && /\[off\]/ { print 0; }'  > $SWAYSOCK.wob_snd
 bindsym XF86AudioMicMute exec --no-startup-id amixer -q sset Capture toggle
 
+# awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master)
 # player control
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
@@ -179,6 +185,13 @@ bindsym XF86AudioStop exec --no-startup-id  playerctl stop
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
+# move workspaces between screens
+
+bindsym $mod+Control+Shift+Right move workspace to output right
+bindsym $mod+Control+Shift+Left move workspace to output left
+bindsym $mod+Control+Shift+Down move workspace to output down
+bindsym $mod+Control+Shift+Up move workspace to output up
 #
 # Layout stuff:
 #
@@ -251,7 +264,7 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     #status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-    status_command i3status-rs $HOME/.config/sway/i3status-rs.conf
+    status_command i3status-rs $HOME/.config/sway/i3status-rs.toml
     colors {
         statusline #ffffff
         background #323232

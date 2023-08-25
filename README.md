@@ -1,10 +1,20 @@
 # Erikas awesome and confusing dotfiles
 
+## general TODO
+
+[ ] some stuff with yadm encryption?
+[ ] yadm bootstrap stuff?
+[ ] more nvim config stuff
+
 ## sway stuff
 
-## list of dependencies that need to be installed
+- partly inspired by https://github.com/shikikan-neko08/nyartix-rice
+- rofi theme is nice
+- install p10k
+- install starship
 
-### sway stuff
+### list of dependencies that need to be installed
+
 - playerctl
 - sway
 - swaymsg
@@ -23,7 +33,7 @@
 - wob
 
 ### nvim/rust/programming stuff
-- rnvimr
+- rnvimr (not currently in use)
 - - ranger
 - - pynvim?
 - lualine
