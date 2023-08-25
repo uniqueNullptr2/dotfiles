@@ -1,0 +1,82 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "solarized-dark"
+[theme.overrides]
+idle_bg = "#123456"
+idle_fg = "#abcdef"
+
+[icons]
+icons = "awesome4"
+# [icons.overrides]
+# bat = ["|E|", "|_|", "|=|", "|F|"]
+# bat_charging = "|^| "
+
+[[block]]
+block="notify"
+driver="swaync"
+format = " $icon {($notification_count.eng(w:1)) |}"
+[[block.click]]
+button = "left"
+action = "show"
+[[block.click]]
+button = "right"
+action = "toggle_paused"
+
+[[block]]
+block="vpn"
+driver="nordvpn"
+interval=10
+format_connected=" $icon "
+format_disconnected=" $icon "
+state_connected="good"
+state_disconnected="info"
+[[block.click]]
+button = "left"
+action = ""
+
+[[block]]
+block = "cpu"
+format=" $icon $utilization.eng(w:3)"
+
+[[block]]
+block = "net"
+interval = 4
+format = " $icon $speed_down.eng(prefix:K,w:3) ^icon_net_down $speed_up.eng(prefix:K,w:3) ^icon_net_up "
+
+[[block]]
+block = "memory"
+format = " $icon $mem_total_used_percents.eng(w:2) "
+format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
+
+[[block]]
+block = "sound"
+format=" $icon $volume.eng(w:4)"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "time"
+interval = 5
+format = " $timestamp.datetime(f:'%a %d/%m %R') "
+
+[[block]]
+block = "keyboard_layout"
+interval = 10
+format = " $layout "
+driver = "sway"
+[block.mappings]
+"German (N/A)" = "GER"
+"English (US)" = "EN"
+
+[[block]]
+block = "backlight"
+# device = "/sys/class/backlight "
+
+[[block]]
+block = "battery"
+driver = "upower"
+interval = 30
+format = " $icon $percentage $time "
+charging_format = " $icon $percentage "
