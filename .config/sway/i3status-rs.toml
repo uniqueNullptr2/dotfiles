@@ -15,7 +15,7 @@ icons = "awesome4"
 [[block]]
 block="notify"
 driver="swaync"
-format = " $icon {($notification_count.eng(w:1)) |}"
+format = " $icon {($notification_count.eng(w:2))|    } "
 [[block.click]]
 button = "left"
 action = "show"
@@ -51,7 +51,7 @@ format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
 
 [[block]]
 block = "sound"
-format=" $icon $volume.eng(w:4)"
+format=" $icon {$volume.eng(w:4)|     }"
 [[block.click]]
 button = "left"
 cmd = "pavucontrol"
