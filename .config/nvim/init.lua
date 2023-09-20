@@ -24,6 +24,9 @@ vim.opt.termguicolors = true
 require("lazy").setup("plugins")
 
 
+vim.cmd[[colorscheme tokyonight-moon]]
+
+
 require('lualine').setup()
 vim.opt.smarttab = true
 vim.opt.expandtab = true

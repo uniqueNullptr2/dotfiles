@@ -4,7 +4,7 @@ return {
         "nvim-lualine/lualine.nvim",
         options = {
             icons_enabled = true,
-            theme = 'auto',
+            theme = 'tokyonight-moon',
             component_separators = { left = '', right = ''},
             section_separators = { left = '', right = ''},
             disabled_filetypes = {

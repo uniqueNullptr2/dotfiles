@@ -69,6 +69,7 @@ driver = "sway"
 [block.mappings]
 "German (N/A)" = "GER"
 "English (US)" = "EN"
+"English (intl., with AltGr dead keys)" = "Intl"
 
 [[block]]
 block = "backlight"
