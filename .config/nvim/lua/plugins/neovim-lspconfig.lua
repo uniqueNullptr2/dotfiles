@@ -35,7 +35,7 @@ M.config = function()
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = ev.buf, desc="LSP Declaration" })
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = ev.buf, desc="LSP Definition" })
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf, desc="LSP Hover" })
+        vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, { buffer = ev.buf, desc="LSP Hover" })
         vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { buffer = ev.buf, desc="LSP Implementation" })
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { buffer = ev.buf, desc="LSP signature help" })
         vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, { buffer = ev.buf, desc="LSP add workspace folder" })
