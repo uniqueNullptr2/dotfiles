@@ -34,4 +34,7 @@ alias exa="exa -l"
 alias ls="ls -lh"
 alias ncon="nordvpn connect Netherlands && nordvpn set killswitch true && nordvpn set autoconnect true"
 alias ndis="nordvpn set killswitch false && nordvpn set autoconnect false && nordvpn disconnect"
-
+alias cargo="cargo mommy"
+alias gcc32='gcc -no-pie -m32 -fno-stack-protector -z execstack'
+alias vaoff='echo 0 | sudo tee /proc/sys/kernel/randomize_va_space'
+alias vaon='echo 2 | sudo tee /proc/sys/kernel/randomize_va_space'
