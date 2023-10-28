@@ -80,8 +80,8 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
 exec bash -c 'mkfifo $SWAYSOCK.wob_bkl; tail -f $SWAYSOCK.wob_bkl | wob'
 exec bash -c 'mkfifo $SWAYSOCK.wob_snd; tail -f $SWAYSOCK.wob_snd | wob'
 
-bindsym --locked XF86MonBrightnessDown exec light -U 2% && light -G | awk '{print int($1)}' > $SWAYSOCK.wob_bkl
-bindsym --locked XF86MonBrightnessUp exec light -A 2% && light -G | awk '{print int($1)}' > $SWAYSOCK.wob_bkl
+bindsym --locked XF86MonBrightnessDown exec light -U 5% && light -G | awk '{print int($1)}' > $SWAYSOCK.wob_bkl
+bindsym --locked XF86MonBrightnessUp exec light -A 5% && light -G | awk '{print int($1)}' > $SWAYSOCK.wob_bkl
 ### Key bindings
 #
 # Basics:
