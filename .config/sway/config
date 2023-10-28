@@ -115,7 +115,7 @@ bindsym --locked XF86MonBrightnessUp exec light -A 2% && light -G | awk '{print 
     exec wl-paste -t text --watch clipman store --no-persist
 #Screenshot
 # TODO check working
-bindsym Print exec  grim X$HOME/Pictures/Screenshots/$(date +"%Y%m%dT%H%M%S").png && notify-send "Screenshot" "Screenshot Captured"
+bindsym Print exec  grim $HOME/Pictures/Screenshots/$(date +"%Y%m%dT%H%M%S").png && notify-send "Screenshot" "Screenshot Captured"
 bindsym Shift+Print exec  grim -g "$(slurp)" $HOME/Pictures/Screenshots/$(date +"%Y%m%dT%H%M%S").png && notify-send "Screenshot" "Screenshot Captured"
 
 # Volume Controls

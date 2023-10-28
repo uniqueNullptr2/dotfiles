@@ -31,6 +31,8 @@
 - i3status-rust
 - light
 - wob
+- grim
+- slurp
 
 ### nvim/rust/programming stuff
 - rnvimr (not currently in use)
