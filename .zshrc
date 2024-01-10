@@ -41,3 +41,5 @@ alias vaon='echo 2 | sudo tee /proc/sys/kernel/randomize_va_space'
 
 export CARGO_MOMMYS_LITTLE="girl/fox"
 export CARGO_MOMMYS_MOODS="chill/thirsty/yikes"
+
+source .zsh-local
