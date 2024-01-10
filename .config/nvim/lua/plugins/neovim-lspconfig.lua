@@ -1,4 +1,3 @@
--- Setup language servers.
 local M = {
     "neovim/nvim-lspconfig"
 }
@@ -7,7 +6,21 @@ M.config = function()
     local lspconfig = require('lspconfig')
     lspconfig.pyright.setup {}
     lspconfig.gopls.setup({})
-    lspconfig.tsserver.setup {}
+    lspconfig.tsserver.setup{}
+    local root_dir = lspconfig.util.root_pattern('.git');
+    local root = root_dir(vim.loop.cwd())
+    if root == nil then root = '.' end
+
+    local cmd = {root .. "/node_modules/@angular/language-server/bin/ngserver", "--stdio", "--tsProbeLocations", "" , "--ngProbeLocations", ""},
+    lspconfig.angularls.setup{
+      cmd = {root .. "/node_modules/@angular/language-server/bin/ngserver", "--stdio", "--tsProbeLocations", root .. "/node_modules" ,"--ngProbeLocations", root ..  "/node_modules"},
+      root_dir = root_dir,
+
+      on_new_config = function(new_config,new_root_dir)
+        new_config.cmd = {root .. "/node_modules/@angular/language-server/bin/ngserver", "--stdio", "--tsProbeLocations", root .. "/node_modules" , "--ngProbeLocations", root .. "/node_modules"}
+      end,
+    }
+    -- lspconfig.tsserver.setup {}
     lspconfig.rust_analyzer.setup {
       -- Server-specific settings. See `:help lspconfig-setup`
       settings = {
