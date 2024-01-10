@@ -33,6 +33,7 @@
 - wob
 - grim
 - slurp
+- xclip
 
 ### nvim/rust/programming stuff
 - rnvimr (not currently in use)

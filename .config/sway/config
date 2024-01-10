@@ -73,6 +73,8 @@ input * {
 # Notification Daemon
 exec swaync
 
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
 # Toggle control center
 bindsym $mod+Shift+n exec swaync-client -t -sw
 

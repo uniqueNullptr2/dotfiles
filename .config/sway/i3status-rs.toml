@@ -1,13 +1,13 @@
 icons_format = "{icon}"
 
 [theme]
-theme = "solarized-dark"
+theme = "dracula"
 [theme.overrides]
 idle_bg = "#123456"
 idle_fg = "#abcdef"
 
 [icons]
-icons = "awesome4"
+icons = "material-nf"
 # [icons.overrides]
 # bat = ["|E|", "|_|", "|=|", "|F|"]
 # bat_charging = "|^| "
@@ -25,7 +25,7 @@ action = "toggle_paused"
 
 [[block]]
 block="vpn"
-driver="nordvpn"
+driver="mullvad"
 interval=10
 format_connected=" $icon "
 format_disconnected=" $icon "
