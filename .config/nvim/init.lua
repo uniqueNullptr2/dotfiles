@@ -21,15 +21,17 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+
 require("lazy").setup("plugins")
 
 
 vim.cmd[[colorscheme tokyonight-moon]]
 
 require('lualine').setup()
+require('nvim-treesitter').setup()
 vim.wo.number = true
 vim.opt.smarttab = true
 vim.opt.expandtab = true
--- vim.opt.tabstop = 4
--- vim.opt.shiftwidth = 4
--- vim.opt.softtabstop = 4
