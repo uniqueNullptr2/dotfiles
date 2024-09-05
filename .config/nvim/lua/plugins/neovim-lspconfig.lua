@@ -6,6 +6,7 @@ M.config = function()
     local lspconfig = require('lspconfig')
     lspconfig.pyright.setup {}
     lspconfig.gopls.setup({})
+    lspconfig.clangd.setup({})
     lspconfig.tsserver.setup{}
     local root_dir = lspconfig.util.root_pattern('.git');
     local root = root_dir(vim.loop.cwd())

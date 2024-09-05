@@ -4,7 +4,7 @@ local M = {
         require("nvim-treesitter.install").update({ with_sync = true })
     end,
     opts= {
-      ensure_installed={"c", "rust", "go", "typescript", "javascript", "angular"},
+      ensure_installed={"c", "rust", "go", "typescript", "javascript" },
       highlight = {
         enable=true,
       },
